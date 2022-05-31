@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+/*ROOT :*/
+:root {
+  --size: 7rem;
+  --sizeBorder: 0.5rem;
+  --sizeRadius: 50%;
+  --timer: 2s;
+  --textColor: white;
+  --textSize: 2rem;
+}
+
+/*RESET : */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*DEFAULT SETTINGS : */
+body {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgb(14, 14, 15) 35%,
+    rgb(24, 25, 26) 100%
+  );
+  color: var(--textColor);
+}
+
+/*Animate the loader :*/
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.loader {
+  width: var(--size);
+  height: var(--size);
+  border: solid rgba(255, 255, 255, 0.281) var(--sizeBorder);
+  border-radius: var(--sizeRadius);
+  color: white;
+  position: relative;
+  margin: 1rem;
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border: solid var(--sizeBorder) transparent;
+  border-top-color: white;
+  border-radius: var(--sizeRadius);
+  color: white;
+  top: calc(var(--sizeBorder) * -1);
+  bottom: calc(var(--sizeBorder) * -1);
+  right: calc(var(--sizeBorder) * -1);
+  left: calc(var(--sizeBorder) * -1);
+  animation: spin var(--timer) linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.text_loader {
+  text-align: center;
+}
+.text_loader span {
+  display: inline-block;
+  margin-right: -0.3rem;
+  font-size: var(--textSize);
+}
+
+/*Animate the text :*/
+.text_loader span {
+  font-size: var(--textSize);
+  animation: animText 1s alternate infinite;
+}
+@keyframes animText {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.85);
+  }
+}
