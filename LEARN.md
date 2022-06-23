@@ -1,0 +1,1 @@
+This simply animate a text and a loadbar using css.
